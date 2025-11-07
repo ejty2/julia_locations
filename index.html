@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaflet Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    #map { height: 100vh; width: 100%; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script>
+    const map = L.map('map').setView([52.112783203675036, 20.332012739181206], 7);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    const blueIcon = new L.Icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
+      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+
+    const locations = [
+      { name: 'Guzów', coords: [52.112783203675036, 20.332012739181206] },
+      { name: 'Kaplonosy', coords: [51.59850551669458, 23.33796807930377] },
+      { name: 'Dziewoklucz', coords: [52.90632759329558, 17.06060869681256] },
+      { name: 'Słońsk', coords: [52.562558360660674, 14.802552275747264] },
+      { name: 'Konopnica', coords: [51.22680924738517, 22.47128001624097] },
+      { name: 'Krzeczów', coords: [49.987415629806144, 20.478519546367732] }
+    ];
+
+    locations.forEach(loc => {
+      L.marker(loc.coords, { icon: blueIcon })
+        .addTo(map)
+        .bindPopup(loc.name);
+    });
+  </script>
+</body>
+</html>

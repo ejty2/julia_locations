@@ -28,18 +28,18 @@
     };
 
     const locations = [
-      { name: 'Guzów', cat: 'biogazowania', coords: [52.112783203675036, 20.332012739181206] },
-      { name: 'Kaplonosy', cat: 'biogazownia', coords: [51.59850551669458, 23.33796807930377] },
-      { name: 'Dziewoklucz', cat: 'biometanownia', coords: [52.90632759329558, 17.06060869681256] },
-      { name: 'Słońsk', cat: 'biometanownia', coords: [52.562558360660674, 14.802552275747264] },
-      { name: 'Konopnica', cat:'biogazownia', coords: [51.22680924738517, 22.47128001624097] },
-      { name: 'Krzeczów', cat:'biometanownia/biogazownia', coords: [49.987415629806144, 20.478519546367732] }
+      { name: 'Guzów', cat: 'biogazowania', pwr: '1MW', coords: [52.112783203675036, 20.332012739181206] },
+      { name: 'Kaplonosy', cat: 'biogazownia', pwr: '0.5MW', coords: [51.59850551669458, 23.33796807930377] },
+      { name: 'Dziewoklucz', cat: 'biometanownia',pwr: '1MW',  coords: [52.90632759329558, 17.06060869681256] },
+      { name: 'Słońsk', cat: 'biometanownia', pwr: '5MW', coords: [52.562558360660674, 14.802552275747264] },
+      { name: 'Konopnica', cat:'biogazownia', pwr: '0.4MW', coords: [51.22680924738517, 22.47128001624097] },
+      { name: 'Krzeczów', cat:'biometanownia/biogazownia', pwr: '3MW', coords: [49.987415629806144, 20.478519546367732] }
     ];
 
     locations.forEach(loc => {
       L.marker(loc.coords, { icon: icons[loc.cat] })
         .addTo(map)
-        .bindPopup(loc.name);
+        .bindPopup("<b>Nazwa: </b>" + loc.name + "<br><b>Moc: </b>" + loc.pwr);
     });
 
     // Legend
